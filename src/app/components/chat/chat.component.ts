@@ -82,7 +82,7 @@ export class ChatComponent implements OnInit {
       this.message.body = this.offer
     }
     
-    const messageToChart$ = this.messageService.addMessageToChatThread(this.message)
+    const messageToChat$ = this.messageService.addMessageToChatThread(this.message)
       .subscribe(_ => {
         /* send message to chat thread by threadSelected and reset all fields */
         this.messageService.incomingMessage.next(this.message)
@@ -93,6 +93,6 @@ export class ChatComponent implements OnInit {
         this.offer = {}
         this.form.resetForm()
       })
-    this.subscriptions.push(messageToChart$)
+    this.subscriptions.push(messageToChat$)
   }
 }

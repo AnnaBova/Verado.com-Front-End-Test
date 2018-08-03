@@ -18,7 +18,6 @@ export class WidgetComponent implements OnInit {
   ngOnInit() {
     const privateChatSub$ = this.messagesService.privateChat
       .subscribe(_ => {
-        console.log(1)
         this.privateChatActive = true
       })
 
