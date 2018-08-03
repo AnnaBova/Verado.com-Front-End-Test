@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.bootstrap-full-width {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+ul.clear {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+textarea, input {
+    padding: 5px 10px;
+    color: #333;
+    font-size: 14px;
+}
+
+label {
+    font-size: 14px;
+}
+
+.pull-right {
+    float: right;
+}
+
+button,
+button:active,
+button:focus {
+    outline: 0;
+    border: 0;
+}
+
+.verado-style-hover {
+    background-color: #06C7A2;
+    cursor: pointer;
+    color: #fff;
+}
+
+.verado-style-hover:hover {
+    transition: all .1s ease-in;
+    background-color: #07eabe;
+}
+
+.block {
+    display: block;
+}
+
+.fz-18 {
+    font-size: 18px;
+}
+
+.fz-14 {
+    font-size: 14px;
+}
+
+.fz-12 {
+    font-size: 12px;
+}
+
+.threads {
+    background-color: #06C7A2; 
+}
+.threads:hover {
+    transition: all .1s;
+    opacity: 1;
+} 
+
+.thread-list > .thread {
+    position: relative;
+    padding: 8px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.thread-list > .thread:hover,
+.thread-list > .thread.active {
+    transition: all .1s ease-in;
+    background-color: #07eabe;
+}
+
+.chat-controls {
+    padding-bottom: 10px;
+}
+
+

@@ -1,0 +1,13 @@
+.messages > li {
+    width: 70%;
+    background-color: #4f4f4f;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.messages > li.left {
+    margin-left: 30%;
+    background-color: #4b7777
+}
+
+

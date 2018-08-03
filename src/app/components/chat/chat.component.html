@@ -1,0 +1,84 @@
+<div class="chat-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="threads bootstrap-full-width">
+          <ul class="clear thread-list d-flex">
+            <li class="thread" *ngFor="let thread of threadList" (click)="changeThread(thread.value)" [ngClass]="{'active': threadSelected === thread.value}">
+              {{ thread.text }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="thread-workspace">
+          <app-chat-thread [thread]="threadSelected"></app-chat-thread>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="chat-controls">
+          <div class="message-types">
+            <div class="tabs-wrapper">
+              <ul class="clear d-flex tabs">
+                <li class="tab verado-style-hover" [ngClass]="{'active': message.type === 'text_message'}" (click)="changeMessageType('text_message')">Text Message</li>
+                <li class="tab verado-style-hover" [ngClass]="{'active': message.type === 'offer_message'}"  (click)="changeMessageType('offer_message')">Offer Message</li>
+              </ul>
+            </div>
+            <form #form="ngForm" novalidate>
+              <div class="message-switch-type-wrapper mt-2 p-2" [ngSwitch]="message.type">
+                <div class="message-type text-message" *ngSwitchCase="'text_message'">
+                    <label for="" class="block mb-1">Message</label>
+                    <textarea (keyup.enter)="sendMessage()" name="message" 
+                      id="" cols="30" rows="2" 
+                      placeholder="Type a message..." 
+                      [(ngModel)]="message.body"
+                      required
+                      #messageText="ngModel">
+                    </textarea>
+                    <div class="error fz-12 text-danger mt-1" *ngIf="messageText.invalid && messageText.touched && messageText.dirty">
+                      <p class="error-text" *ngIf="messageText.hasError('required')">
+                        You cannot send empty message
+                      </p>
+                    </div>
+                </div>
+                <div class="message-type offer-message" *ngSwitchCase="'offer_message'">
+                    <div class="to-whom">
+                      <label for="" class="block mb-1">To whom</label>
+                      <input type="text" required pattern="@.+" [nicknameValidator]="user.nickname" #nickname="ngModel" 
+                        [(ngModel)]="offer.toWhom" placeholder="@nickname" name="nickname">
+                      <div class="error fz-12 text-danger mt-1" *ngIf="nickname.invalid && nickname.touched && nickname.dirty">
+                        <p class="error-text" *ngIf="nickname.hasError('nickname')">
+                          You cannot send offer to yourself
+                        </p>
+                        <p class="error-text" *ngIf="nickname.hasError('pattern')">
+                          Nickname is invalid
+                        </p>
+                        <p class="error-text" *ngIf="nickname.hasError('required')">
+                          Nickname is required
+                        </p>
+                      </div>
+                    </div>
+                    <div class="offer-title mt-2">
+                      <label for="" class="block mb-1">Offer title</label>
+                      <input type="text" placeholder="Type a title" [(ngModel)]="offer.title" name="title">
+                    </div>
+                    <div class="offer-description mt-2">
+                      <label for="" class="block mb-1">Offer description</label>
+                      <textarea name="descr" id="" cols="30" rows="2" placeholder="Type a description" [(ngModel)]="offer.description"></textarea>
+                    </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="send-button-wrapper d-flex justify-content-center p-1">
+            <button class="verado-style-hover" (click)="sendMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

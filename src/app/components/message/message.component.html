@@ -1,0 +1,41 @@
+<div class="message fz-14" (click)="showOfferModal()" [ngClass]="{'clickable': isOfferToCurrentUser}" >
+  <div class="message-header d-flex justify-content-between" *ngIf="!isOwner">
+    <span class="message-from">{{ message.from.firstname + ' ' + message.from.lastname }}</span>
+    <span class="from-nickname">{{ '@' + message.from.nickname }}</span>
+    <span class="offer text-danger" *ngIf="message.type === 'offer_message'">Offer</span>
+  </div>
+  <div class="message-type-switch-wrapper mt-1" [ngClass]="{'mt-1': !isOwner}" [ngSwitch]="message.type">
+    <div class="text-message" *ngSwitchCase="'text_message'" [messageMarker]="currentUserNickName" [messageText]="message.body">
+      <p class="mb-0">{{ message.body }}</p>
+    </div>
+    <div class="offer-message" *ngSwitchCase="'offer_message'">
+      <div class="to-whom" [messageMarker]="currentUserNickName" [messageText]="message.body.toWhom">
+        {{ message.body.toWhom }}
+      </div>
+      <div class="title">
+        <span>Title: </span>
+        <p>{{ message.body.title }}</p>
+      </div>
+      <div class="description">
+        <span>Description: </span>
+        <p>{{message.body.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #offerModal let-c="close" let-d="dismiss">
+  <div class="modal-header text-center">
+    <h3>Accept Offer</h3>
+  </div>
+  <div class="modal-body">
+    <div class="actions text-center">
+      <button class="accept-offer verado-style-hover mr-3" (click)="c(true)">
+        <i class="fas fa-check"></i>
+      </button>
+      <button class="reject-offer verado-style-hover" (click)="d(false)">
+        <i class="fas fa-ban"></i>
+      </button>
+    </div>
+  </div>
+</ng-template>

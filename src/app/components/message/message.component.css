@@ -1,0 +1,23 @@
+.message {
+    padding: 5px 10px;
+}
+
+.message-header {
+    border-bottom: 1px solid #3c3a3a;
+}
+
+.text-message > p,
+.text-message > span,
+.offer-message > p,
+.offer-message > span {
+    word-wrap: break-word;
+}
+
+.clickable {
+    cursor: pointer
+}
+
+.clickable:hover {
+    transition: all .1s ease-in;
+    background-color: rgb(88, 88, 88);
+}

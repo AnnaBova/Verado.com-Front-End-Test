@@ -1,0 +1,8 @@
+<ul class="clear messages">
+  <li class="mb-2" 
+    [@messageAdded]="messages?.length"
+    [ngClass]="{'left': currentUser.nickname === msg.from.nickname}"
+    *ngFor="let msg of messages">
+    <app-message [message]="msg" [currentUser]="currentUser.nickname"></app-message>
+  </li>
+</ul>

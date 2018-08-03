@@ -1,0 +1,36 @@
+<div class="private-chat-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="threads bootstrap-full-width">
+            <ul class="clear thread-list d-flex">
+              <li class="thread" *ngFor="let thread of threadList" (click)="changeThread(thread)" 
+                [ngClass]="{'active': threadSelected.searchString === thread.searchString}">
+                {{ thread.value }}
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="thread-workspace">
+          <app-chat-thread [thread]="threadSelected" state="private"></app-chat-thread>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="chat-controls">
+          <div class="text-message mt-2">
+              <label for="" class="block mb-1">Message</label>
+              <textarea (keyup.enter)="sendMessage()" name="" id="" cols="30" rows="2" placeholder="Type a message..." [(ngModel)]="message.body"></textarea>
+          </div>
+          <div class="send-button-wrapper d-flex justify-content-center p-1">
+            <button class="verado-style-hover" (click)="sendMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

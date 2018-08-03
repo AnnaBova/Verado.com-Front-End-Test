@@ -1,0 +1,4 @@
+<div class="widget" (click)="toggleChat()">
+  <app-chat *ngIf="chatActive" (click)="propagation($event)"></app-chat>
+  <app-private-chat *ngIf="privateChatActive" (click)="propagation($event)"></app-private-chat> 
+</div>

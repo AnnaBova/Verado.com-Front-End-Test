@@ -1,0 +1,21 @@
+
+    <div class="col-lg-3">
+      <ol class="fz-14">
+          <li *ngFor="let user of users" class="d-flex justify-content-between">
+            <div>
+              Nickname: {{ user.nickname }}; <br>
+              Email: {{ user.email }}; <br>
+              Firstname: {{ user.firstname }}; <br>
+              Lastname: {{ user.lastname }};
+            </div>
+            <div class="action d-flex flex-column justify-content-between align-items-center">
+              <button class="btn btn-primary" (click)="switchUser(user)">Switch</button>
+              <div class="selected fz-18 text-success" *ngIf="currentUser.nickname === user.nickname">
+                <span><i class="far fa-check-circle"></i></span>
+              </div>
+            </div>
+          </li>
+        </ol>
+    </div>
+
+

@@ -1,0 +1,10 @@
+.widget {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: silver;
+}
